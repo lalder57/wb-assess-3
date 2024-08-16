@@ -115,6 +115,7 @@ app.post("/like-fossil", (req, res) => {
 
 app.get('/random-fossil.json', (req, res) => {
   const randomFossil = lodash.sample(OTHER_FOSSILS);
+  console.log(randomFossil);
   res.json(randomFossil);
 });
 
