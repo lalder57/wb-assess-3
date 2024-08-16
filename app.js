@@ -86,11 +86,39 @@ app.post("/get-name", (req, res) => {
   res.redirect("/top-fossils");
 });
 
+// app.post("/madlib", (req, res) => {
+//   const {person, color, noun, adjective} = req.body;
+//   console.log(req.body);
+
+//   res.render("madlib.html.njk", {
+//     person: person,
+//     color: color, 
+//     noun: noun,
+//     adjective: adjective,
+//   });
+// });
+
+app.post("/like-fossil", (req, res) => {
+  const likedFossil = req.body.likedFossil; 
+  console.log(req.body);
+  
+  for (const fossil in MOST_LIKED_FOSSILS) {
+    if (likedFossil === MOST_LIKED_FOSSILS[fossil].name) {
+      MOST_LIKED_FOSSILS[fossil].num_likes += 1;
+    }
+  }
+  res.render("thank-you.html.njk", {
+    likedFossil: likedFossil, 
+    name: req.session.name,
+  });
+});
 
 app.get('/random-fossil.json', (req, res) => {
   const randomFossil = lodash.sample(OTHER_FOSSILS);
   res.json(randomFossil);
 });
+
+
 
 ViteExpress.listen(app, port, () => {
   console.log(`Server running on http://localhost:${port}...`);

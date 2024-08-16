@@ -15,6 +15,22 @@
 
      {% endfor %}
    </div>
+
+   <form action="/like-fossil" method="POST">
+      <label for="likedFossil">Choose a fossil:</label>
+     
+      <select name="likedFossil" id="likedFossil">
+        <option value="">select your option</option>
+      {% for fossilKey, fossilVal in mostLikedFossilsObj %}
+        <option value="{{ mostLikedFossilsObj[fossilKey].name }}">{{ mostLikedFossilsObj[fossilKey].name }}</option>
+      {% endfor %}
+      </select>
+      
+      <div id="form-button">
+        <input type="submit" value="Click to Submit your Like!" id="submit-button">
+      </div>
+
+   </form>
       
 
 
