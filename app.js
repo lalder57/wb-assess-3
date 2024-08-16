@@ -61,25 +61,27 @@ const OTHER_FOSSILS = [
 ];
 
 
-let name;
-
 app.get("/top-fossils", (req, res) => {
   if(req.session.name) {
     res.render("top-fossils.html.njk", {
       mostLikedFossilsObj: MOST_LIKED_FOSSILS, 
-      name: name,
+      name: req.session.name,
     });
+  } else {
+    res.redirect("/");
   };
 });
 
 app.get("/", (req, res) => {
-  res.render("homepage.html.njk");
+  if(req.session.name) {
+    res.redirect("/top-fossils");
+  } else {
+    res.render("homepage.html.njk");
+  }
 });
 
 app.post("/get-name", (req, res) => {
-  name = req.body.name
-  req.session.name = name;
-  console.log(name);
+  req.session.name = req.body.name;
 
   res.redirect("/top-fossils");
 });
