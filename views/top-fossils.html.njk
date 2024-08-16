@@ -1,11 +1,15 @@
 {% extends 'base.html.njk' %}
 
 {% block body %}
-    
+
+    <h1>Welcome, {{ name }}</h1>
+ 
+  
+
   <div class="fossil-div">  
 
     {% for fossilKey, fossilVal in mostLikedFossilsObj %}
-      <h3>User, this is an {{ mostLikedFossilsObj[fossilKey].name }}</h3>
+      <h3>{{ name }}, this is an {{ mostLikedFossilsObj[fossilKey].name }}</h3>
       <h2>Liked {{ mostLikedFossilsObj[fossilKey].num_likes }} times.</h2>
       <img src="{{ mostLikedFossilsObj[fossilKey].img }}" />
 

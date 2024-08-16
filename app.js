@@ -60,11 +60,30 @@ const OTHER_FOSSILS = [
   },
 ];
 
+
+let name;
+
 app.get("/top-fossils", (req, res) => {
-  res.render("top-fossils.html.njk", {
-    mostLikedFossilsObj: MOST_LIKED_FOSSILS,
-  })
+  if(req.session.name) {
+    res.render("top-fossils.html.njk", {
+      mostLikedFossilsObj: MOST_LIKED_FOSSILS, 
+      name: name,
+    });
+  };
 });
+
+app.get("/", (req, res) => {
+  res.render("homepage.html.njk");
+});
+
+app.post("/get-name", (req, res) => {
+  name = req.body.name
+  req.session.name = name;
+  console.log(name);
+
+  res.redirect("/top-fossils");
+});
+
 
 app.get('/random-fossil.json', (req, res) => {
   const randomFossil = lodash.sample(OTHER_FOSSILS);
