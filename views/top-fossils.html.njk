@@ -1,5 +1,7 @@
 {% extends 'base.html.njk' %}
 
+{% block title %} Top Fossils {% endblock %}
+
 {% block body %}
 
     <h1>Welcome, {{ name }}</h1>
@@ -9,14 +11,22 @@
   <div class="fossil-div">  
 
     {% for fossilKey, fossilVal in mostLikedFossilsObj %}
-      <h3>{{ name }}, this is an {{ mostLikedFossilsObj[fossilKey].name }}</h3>
-      <h2>Liked {{ mostLikedFossilsObj[fossilKey].num_likes }} times.</h2>
-      <img src="{{ mostLikedFossilsObj[fossilKey].img }}" />
+      <div id="fossil-box">
+        <div id="dino-text">
+          <h3>{{ name }}, this is an {{ mostLikedFossilsObj[fossilKey].name }}</h3>
+        </div>
+        <div id="dino-likes">
+          <h2>Liked {{ mostLikedFossilsObj[fossilKey].num_likes }} times.</h2>
+        </div>
+        <div id="dino-img">
+          <img src="{{ mostLikedFossilsObj[fossilKey].img }}" />
+        </div>
+      </div>
 
      {% endfor %}
    </div>
 
-   <form action="/like-fossil" method="POST">
+   <form action="/like-fossil" method="POST" id="like-fossil-form">
       <label for="likedFossil">Choose a fossil:</label>
      
       <select name="likedFossil" id="likedFossil">

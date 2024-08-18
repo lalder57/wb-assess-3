@@ -1,5 +1,7 @@
 {% extends 'base.html.njk' %}
 
+{% block title %} Homepage {% endblock %}
+
 {% block body %}
 
     <h1>Most Liked Fossils</h1>
@@ -10,7 +12,7 @@
         <input id="namefield" type="text" name="name" required />
       </div>
       <div>
-        <input type="submit" />
+        <input type="submit" id="submit-name" />
       </div>
     </form>
 

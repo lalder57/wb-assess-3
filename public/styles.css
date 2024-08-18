@@ -1,10 +1,15 @@
 body {
   background-color: #ffe5b2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
 }
 
 h1 {
   color: red;
   font-family: sans-serif;
+  padding-left: 10px;
 }
 
 img {
@@ -18,11 +23,37 @@ img.centered {
 }
 
 .fossil-div {
-  display: inline-block;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   padding: 10px;
   width: 205px;
 }
 
+#fossil-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#dino-text, #dino-likes {
+  text-align: center;
+}
 .fossil-div img {
   border: 2px solid green;
 }
+
+#like-fossil-form {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  padding: 10px;
+}
+
+#likedFossil {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
