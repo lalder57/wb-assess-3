@@ -9,7 +9,7 @@ const app = express();
 const port = '8000';
 
 app.use(morgan('dev'));
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use(session({ secret: 'ssshhhhh', saveUninitialized: true, resave: false }));
 
@@ -103,7 +103,7 @@ app.post("/like-fossil", (req, res) => {
   console.log(req.body);
   
   for (const fossil in MOST_LIKED_FOSSILS) {
-    if (likedFossil === MOST_LIKED_FOSSILS[fossil].name) {
+    if (likedFossil === fossil) {
       MOST_LIKED_FOSSILS[fossil].num_likes += 1;
     }
   }
